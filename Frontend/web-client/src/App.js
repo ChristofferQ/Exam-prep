@@ -52,8 +52,8 @@ function App() {
                 (<div>
                     <Menu />
                     <Switch>
-                         <Route exact path="/menu-one">
-                         <MenuOne />
+                         <Route exact path="/">
+                         <Home />
                          </Route>
                          <Route exact path="/menu-two">
                             <MenuTwo />

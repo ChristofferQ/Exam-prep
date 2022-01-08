@@ -1,8 +1,7 @@
 package utils;
 
 
-import entities.Role;
-import entities.User;
+import entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -25,6 +24,15 @@ public class SetupTestUsers {
     User admin = new User("admin", "12345");
     User both = new User("user_admin", "1234");
 
+    Boat boat1 = new Boat(1,"brand","make","name","image");
+    Boat boat2 = new Boat(2,"brand2","make2","name2","image2");
+
+    Harbour harbour1 = new Harbour(1,"name","address",20);
+    Harbour harbour2 = new Harbour(2,"name2","address2",40);
+
+    Owner owner1 = new Owner(1,"name","address", 1234);
+    Owner owner2 = new Owner(2,"name2","address2", 6789);
+
 
 
     if(admin.getUserPass().equals("test")||user.getUserPass().equals("test")||both.getUserPass().equals("test"))
@@ -41,6 +49,12 @@ public class SetupTestUsers {
     em.persist(userRole);
     em.persist(adminRole);
     em.persist(user);
+    em.persist(boat1);
+    em.persist(boat2);
+    em.persist(harbour1);
+    em.persist(harbour2);
+    em.persist(owner1);
+    em.persist(owner2);
     em.persist(admin);
     em.persist(both);
     em.getTransaction().commit();
