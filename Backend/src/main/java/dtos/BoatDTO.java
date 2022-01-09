@@ -10,6 +10,8 @@ public class BoatDTO {
     private String name;
     private String image;
 
+    //Constructors
+
     public BoatDTO(Boat b) {
         this.id = b.getId();
         this.brand = b.getBrand();
@@ -25,6 +27,8 @@ public class BoatDTO {
         this.name = name;
         this.image = image;
     }
+
+    //Getters and Setters
 
     public int getId() {
         return id;
@@ -65,4 +69,5 @@ public class BoatDTO {
     public void setImage(String image) {
         this.image = image;
     }
+
 }

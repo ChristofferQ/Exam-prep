@@ -2,6 +2,7 @@ package utils;
 
 
 import entities.*;
+import facades.MainFacade;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

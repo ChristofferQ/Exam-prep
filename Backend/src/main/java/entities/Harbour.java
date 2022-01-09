@@ -24,8 +24,8 @@ public class Harbour implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Column(name = "adress")
-    private String adress;
+    @Column(name = "address")
+    private String address;
 
     @Basic(optional = false)
     @NotNull
@@ -40,7 +40,7 @@ public class Harbour implements Serializable {
     public Harbour(int id, String name, String address, int capacity) {
         this.id = id;
         this.name = name;
-        this.adress = address;
+        this.address = address;
         this.capacity = capacity;
     }
 
@@ -61,11 +61,11 @@ public class Harbour implements Serializable {
     }
 
     public String getAddress() {
-        return adress;
+        return address;
     }
 
-    public void setAddress(String adress) {
-        adress = adress;
+    public void setAddress(String address) {
+        address = address;
     }
 
     public int getCapacity() {

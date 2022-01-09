@@ -108,4 +108,5 @@ public class Boat implements Serializable {
     public void setOwnerList(List<Owner> OwnerList) {
         this.ownerList = ownerList;
     }
+
 }

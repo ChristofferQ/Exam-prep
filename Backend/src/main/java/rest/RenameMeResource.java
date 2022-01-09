@@ -1,6 +1,7 @@
 package rest;
 
 import com.google.gson.Gson;
+import dtos.BoatDTO;
 import dtos.OwnerDTO;
 import entities.Owner;
 import entities.User;
@@ -19,6 +20,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.PathParam;
 
+import facades.MainFacade;
 import utils.EMF_Creator;
 
 /**
@@ -86,6 +88,11 @@ public class RenameMeResource {
         return result;
     }
 
+
+
+
+
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("owner")
@@ -94,6 +101,19 @@ public class RenameMeResource {
         TypedQuery <Owner> query = em.createQuery("SELECT o from Owner o", Owner.class);
         List<Owner> result = query.getResultList();
         return result;
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+//    @RolesAllowed("admin")
+    @Path("createBoat")
+    public String CreateBoat(String jsonString) throws SQLException {
+        System.out.println(jsonString);
+        BoatDTO bDTO = gson.fromJson(jsonString, BoatDTO.class);
+        System.out.println("id: " + bDTO.getId() + " brand: " + bDTO.getBrand() + " make: " + bDTO.getMake() + " name: " + bDTO.getName()+ " image: " + bDTO.getImage());
+        MainFacade.createBoat(bDTO);
+        return "{}";
     }
 
     public void main(String[] args) throws Exception{
