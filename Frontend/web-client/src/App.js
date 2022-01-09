@@ -57,7 +57,7 @@ function App() {
                          <Route exact path="/">
                          <Home />
                          </Route>
-                        <Route exact path="/">
+                        <Route exact path="/owner">
                             <Owner />
                         </Route>
                         <NoMatch />
