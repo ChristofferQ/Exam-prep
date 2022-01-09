@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import facade from "../ApiFacade";
 
-const Owner = () => {
-    const [ownerList, setOwnerList] = useState([]);
+const Harbour = () => {
+    const [harbourList, setHarbourList] = useState([]);
     useEffect(() => {
-        facade.fetchData("owner")
+        facade.fetchData("harbour")
             .then(data => {
-                setOwnerList(data);
+                setHarbourList(data);
             })
     }, []);
 
@@ -14,24 +14,24 @@ const Owner = () => {
 
     return (
         <div className="container mt-5">
-            <h2>List Of Owners</h2>
+            <h2>List Of Harbours</h2>
             <table className="table mt-4">
                 <thead>
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
                     <th>Address</th>
-                    <th>Phone</th>
+                    <th>Capacity</th>
                 </tr>
                 </thead>
                 <tbody>
                 {
-                    ownerList.map((owner, index) => (
+                    harbourList.map((harbour, index) => (
                         <tr>
-                            <td>{owner.id}</td>
-                            <td>{owner.name}</td>
-                            <td>{owner.address}</td>
-                            <td>{owner.phone}</td>
+                            <td>{harbour.id}</td>
+                            <td>{harbour.name}</td>
+                            <td>{harbour.address}</td>
+                            <td>{harbour.capacity}</td>
                         </tr>
                     ))
                 }
@@ -41,4 +41,4 @@ const Owner = () => {
     )
 }
 
-export default Owner;
+export default Harbour;

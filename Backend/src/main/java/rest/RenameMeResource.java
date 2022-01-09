@@ -3,6 +3,7 @@ package rest;
 import com.google.gson.Gson;
 import dtos.BoatDTO;
 import dtos.OwnerDTO;
+import entities.Boat;
 import entities.Owner;
 import entities.User;
 
@@ -98,8 +99,19 @@ public class RenameMeResource {
     @Path("owner")
     public List<Owner> ShowAllOwners() throws SQLException {
         EntityManager em = EMF.createEntityManager();
-        TypedQuery <Owner> query = em.createQuery("SELECT o from Owner o", Owner.class);
+        TypedQuery <Owner> query = em.createQuery("SELECT o FROM Owner o", Owner.class);
         List<Owner> result = query.getResultList();
+        return result;
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("boat")
+    public List<Boat> ShowAllBoats() throws SQLException {
+        EntityManager em = EMF.createEntityManager();
+        TypedQuery <Boat> query = em.createQuery("SELECT b FROM Boat b", Boat.class);
+        List<Boat> result = query.getResultList();
         return result;
     }
 
@@ -118,6 +130,7 @@ public class RenameMeResource {
 
     public void main(String[] args) throws Exception{
         ShowAllOwners();
+        ShowAllBoats();
 
     }
 
