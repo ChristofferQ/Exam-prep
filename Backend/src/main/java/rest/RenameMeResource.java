@@ -16,10 +16,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.SecurityContext;
+import javax.ws.rs.core.*;
 import javax.ws.rs.PathParam;
 
 import facades.MainFacade;
@@ -129,15 +126,25 @@ public class RenameMeResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-//    @RolesAllowed("admin")
     @Path("createBoat")
-    public String CreateBoat(String jsonString) throws SQLException {
-        System.out.println(jsonString);
-        BoatDTO bDTO = gson.fromJson(jsonString, BoatDTO.class);
-        System.out.println("id: " + bDTO.getId() + " brand: " + bDTO.getBrand() + " make: " + bDTO.getMake() + " name: " + bDTO.getName()+ " image: " + bDTO.getImage());
-        MainFacade.createBoat(bDTO);
-        return "{}";
+    public Response createBoat (String boat){
+        BoatDTO bDTO = gson.fromJson(boat, BoatDTO.class);
+        bDTO = MainFacade.createBoat(bDTO.getId(), bDTO.getBrand(), bDTO.getMake(), bDTO.getName(), bDTO.getImage());
+        return Response.ok(gson.toJson(bDTO),MediaType.APPLICATION_JSON).build();
     }
+
+//    @POST
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+////    @RolesAllowed("admin")
+//    @Path("createBoat")
+//    public String CreateBoat(String jsonString) throws SQLException {
+//        System.out.println(jsonString);
+//        BoatDTO bDTO = gson.fromJson(jsonString, BoatDTO.class);
+//        System.out.println("id: " + bDTO.getId() + " brand: " + bDTO.getBrand() + " make: " + bDTO.getMake() + " name: " + bDTO.getName()+ " image: " + bDTO.getImage());
+//        MainFacade.createBoat(bDTO);
+//        return "{}";
+//    }
 
     public void main(String[] args) throws Exception{
         ShowAllOwners();

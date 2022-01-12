@@ -24,20 +24,25 @@ public class MainFacade {
         return instance;
     }
 
-    public static void createBoat(BoatDTO bDTO) {
-//        EntityManager em = emf.createEntityManager();
-//
-//        em.getTransaction().begin();
-//        Boat boat = new Boat();
-//        bDTO.setId(1);
-//        bDTO.setBrand("Brand3");
-//        bDTO.setMake("Make3");
-//        bDTO.setName("Name3");
-//        bDTO.setImage("Image3");
-//        em.persist(boat);
-//        em.getTransaction().commit();
+
+    public static BoatDTO createBoat(int id, String brand, String make, String name, String image) /* throws MissingFieldException */{
+        /*if(brand == null || make == null || name == null || image == null){
+            throw new MissingFieldException("Missing field");
+        }*/
+
+        Boat b = new Boat(id, brand, make, name, image);
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(b);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return new BoatDTO(b);
 
     }
+
 
 
 
