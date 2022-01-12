@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import dtos.BoatDTO;
 import dtos.OwnerDTO;
 import entities.Boat;
+import entities.Harbour;
 import entities.Owner;
 import entities.User;
 
@@ -115,6 +116,16 @@ public class RenameMeResource {
         return result;
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("harbour")
+    public List<Harbour> ShowAllHarbours() throws SQLException {
+        EntityManager em = EMF.createEntityManager();
+        TypedQuery <Harbour> query = em.createQuery("SELECT h FROM Harbour h", Harbour.class);
+        List<Harbour> result = query.getResultList();
+        return result;
+    }
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -131,6 +142,7 @@ public class RenameMeResource {
     public void main(String[] args) throws Exception{
         ShowAllOwners();
         ShowAllBoats();
+        ShowAllHarbours();
 
     }
 

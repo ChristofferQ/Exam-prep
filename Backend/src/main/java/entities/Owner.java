@@ -14,7 +14,7 @@ public class Owner implements Serializable {
     @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
-    @Column(name = "Id")
+    @Column(name = "id")
     private int id;
 
     @Basic(optional = false)

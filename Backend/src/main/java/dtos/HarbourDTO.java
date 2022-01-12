@@ -4,31 +4,31 @@ import entities.Harbour;
 
 public class HarbourDTO {
 
-    private int Id;
+    private int id;
     private String name;
     private String address;
     private int  capacity;
 
     public HarbourDTO(Harbour h) {
-        this.Id = h.getId();
+        this.id = h.getId();
         this.name = h.getName();
         this.address = h.getAddress();
         this.capacity = h.getCapacity();
     }
 
     public HarbourDTO(int id, String name, String address, int capacity) {
-        Id = id;
+        this.id = id;
         this.name = name;
         this.address = address;
         this.capacity = capacity;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        id = id;
     }
 
     public String getName() {

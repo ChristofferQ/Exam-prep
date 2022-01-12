@@ -4,7 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "boat")
@@ -14,7 +13,7 @@ public class Boat implements Serializable {
     @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
-    @Column(name = "Id")
+    @Column(name = "id")
     private int id;
 
     @Basic(optional = false)
@@ -53,9 +52,7 @@ public class Boat implements Serializable {
         this.image = image;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() {return id; }
 
     public void setId(int id) {
         this.id = id;
